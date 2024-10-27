@@ -363,7 +363,7 @@ class HTTPResponse
         echo <<<EOT
 <p>Redirecting to <a href="{$urlATT}" title="Click this link if your browser does not redirect you">{$title}</a></p>
 <meta http-equiv="refresh" content="1; url={$urlATT}" />
-<script type="application/javascript">setTimeout(function(){
+<script>setTimeout(function(){
 	window.location.href = "{$urlJS}";
 }, 50);</script>
 EOT
