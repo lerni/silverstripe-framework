@@ -14,7 +14,7 @@ namespace SilverStripe\ORM;
  *
  * @template T
  * @implements SS_List<T>
- * @deprecated 5.4.0 Will be renamed to SilverStripe\Model\List\Limitable
+ * @deprecated 5.4.0 Will be merged into SS_List
  */
 interface Limitable extends SS_List
 {
