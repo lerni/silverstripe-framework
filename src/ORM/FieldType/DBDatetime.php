@@ -242,19 +242,16 @@ class DBDatetime extends DBDate implements TemplateGlobalProvider
                 ['count' => $diff->i]
             );
         }
+        $message = _t(
+            __CLASS__ . '.nSeconds',
+            'one second|{count} seconds',
+            ['count' => $diff->s ?? 0]
+        );
         if ($diff->s) {
-            $result[] = _t(
-                __CLASS__ . '.nSeconds',
-                'one second|{count} seconds',
-                ['count' => $diff->s]
-            );
+            $result[] = $message;
         }
         if (empty($result)) {
-            return _t(
-                __CLASS__ . '.nSeconds',
-                '{count} seconds',
-                ['count' => 0]
-            );
+            return $message;
         }
         return implode(', ', $result);
     }

@@ -132,6 +132,7 @@ en:
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
     Search: 'Search "{name}"'
     SearchFormFaliure: 'No search form could be generated'
+    Search_Default: Search
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Cannot remove yourself from this group, you will lose admin rights'
   SilverStripe\Forms\GridField\GridFieldPaginator:
@@ -198,6 +199,25 @@ en:
     TIMEDIFFIN: 'in {difference}'
     YEARS_SHORT_PLURALS:
       one: '{count} year'
+      other: '{count} years'
+  SilverStripe\ORM\FieldType\DBDatetime:
+    nDays:
+      one: 'one day'
+      other: '{count} days'
+    nHours:
+      one: 'one hour'
+      other: '{count} hours'
+    nMinutes:
+      one: 'one minute'
+      other: '{count} minutes'
+    nMonths:
+      one: 'one month'
+      other: '{count} months'
+    nSeconds:
+      one: 'one second'
+      other: '{count} seconds'
+    nYears:
+      one: 'one year'
       other: '{count} years'
   SilverStripe\ORM\FieldType\DBEnum:
     ANY: Any
