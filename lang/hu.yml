@@ -27,6 +27,8 @@ hu:
     Save: Mentés
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Szerkeszt
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Keresés
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Oldal
   SilverStripe\Forms\UrlField:

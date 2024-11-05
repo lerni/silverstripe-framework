@@ -74,6 +74,8 @@ ja:
     Saved: '保存 {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: 編集
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: 検索
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: の
     Page: ページ

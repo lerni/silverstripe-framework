@@ -74,6 +74,8 @@ nb:
     Saved: 'Lagret {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Rediger
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Søk
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: av
     Page: Side

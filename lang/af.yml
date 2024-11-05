@@ -64,6 +64,8 @@ af:
     Save: Stoor
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Verander
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Soek
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: van
     Page: Bladsy

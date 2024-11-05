@@ -53,6 +53,8 @@ ja_JP:
     Delete: 削除
     DeletePermissionsFailure: 削除権限がありません
     Save: 保存
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: 検索
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: ページ
   SilverStripe\Forms\MoneyField:

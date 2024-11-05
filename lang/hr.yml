@@ -58,6 +58,8 @@ hr:
     Saved: 'Spremljeno {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Uredi
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Traži
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: od
     Page: Stranica

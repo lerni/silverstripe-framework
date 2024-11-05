@@ -73,6 +73,8 @@ sr_RS@latin:
     Saved: 'Sačuvano {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Izmeni
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Pretraži
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: od
     Page: Stranica

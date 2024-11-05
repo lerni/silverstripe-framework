@@ -76,6 +76,8 @@ mi:
     Saved: 'I tiakina te {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Whakatika
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Rapu
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: o
     Page: Whārangi

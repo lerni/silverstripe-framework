@@ -86,6 +86,8 @@ cs:
     Saved: 'Uloženo {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Editovat
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Hledat
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: z
     Page: Stránka

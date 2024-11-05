@@ -36,6 +36,8 @@ is:
     Save: Vista
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Breyta
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Leita
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Síða
   SilverStripe\Forms\MoneyField:
