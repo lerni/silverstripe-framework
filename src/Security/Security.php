@@ -1063,6 +1063,12 @@ class Security extends Controller implements TemplateGlobalProvider
         // New salts will only need to be generated if the password is hashed for the first time
         $salt = ($salt) ? $salt : $encryptor->salt($password);
 
+        // PasswordEncryptors may return false, though the Member.db ['Salt'] field is
+        // a Varchar so we need to ensure it's returned as a string
+        if ($salt === false) {
+            $salt = '';
+        }
+
         return [
             'password'  => $encryptor->encrypt($password, $salt, $member),
             'salt' => $salt,

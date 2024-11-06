@@ -5,6 +5,7 @@ namespace SilverStripe\Dev\Tests;
 use League\Csv\Writer;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Dev\Tests\CsvBulkLoaderTest\CustomLoader;
+use SilverStripe\Dev\Tests\CsvBulkLoaderTest\Biscuit;
 use SilverStripe\Dev\Tests\CsvBulkLoaderTest\Player;
 use SilverStripe\Dev\Tests\CsvBulkLoaderTest\PlayerContract;
 use SilverStripe\Dev\Tests\CsvBulkLoaderTest\Team;
@@ -21,10 +22,10 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 class CsvBulkLoaderTest extends SapphireTest
 {
-
     protected static $fixture_file = 'CsvBulkLoaderTest.yml';
 
     protected static $extra_dataobjects = [
+        Biscuit::class,
         Team::class,
         Player::class,
         PlayerContract::class,
@@ -322,6 +323,22 @@ class CsvBulkLoaderTest extends SapphireTest
             ['FirstName' => 'Järg', 'Birthday' => '1982-06-30'],
             ['FirstName' => 'Jacob', 'Birthday' => '2000-04-30'],
         ], $players);
+    }
+
+    public function testLoadNumericTypes()
+    {
+        $loader = new CsvBulkLoader(Biscuit::class);
+        $loader->load($this->csvPath . 'Biscuits.csv');
+        $biscuits = Biscuit::get();
+        $this->assertCount(1, $biscuits);
+        $this->assertListContains([
+            [
+                'Title' => 'lorem',
+                'MyInt' => 12345,
+                'MyFloat' => 12.345,
+                'MyDecimal' => 123.45,
+            ],
+        ], $biscuits);
     }
 
     protected function getLineCount(&$file)

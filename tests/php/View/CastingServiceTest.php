@@ -67,7 +67,7 @@ class CastingServiceTest extends SapphireTest
                 'expected' => DBHTMLText::class,
             ],
             [
-                'data' => '12.35',
+                'data' => 12.35,
                 'source' => TestDataObject::class,
                 'fieldName' => 'OverrideCastingHelper',
                 'expected' => DBCurrency::class,
