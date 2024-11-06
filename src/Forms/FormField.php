@@ -427,8 +427,6 @@ class FormField extends RequestHandler
 
     /**
      * Returns the field name.
-     *
-     * @return string
      */
     public function getName()
     {

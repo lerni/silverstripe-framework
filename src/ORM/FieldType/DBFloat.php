@@ -2,20 +2,24 @@
 
 namespace SilverStripe\ORM\FieldType;
 
+use SilverStripe\Core\Validation\FieldValidation\NumericFieldValidator;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\DB;
+use SilverStripe\Model\ModelData;
 
 /**
  * Represents a floating point field.
  */
 class DBFloat extends DBField
 {
+    private static array $field_validators = [
+        NumericFieldValidator::class,
+    ];
+
     public function __construct(?string $name = null, float|int $defaultVal = 0)
     {
-        $defaultValue = is_float($defaultVal) ? $defaultVal : (float) 0;
-        $this->setDefaultValue($defaultValue);
-
+        $this->setDefaultValue((float) $defaultVal);
         parent::__construct($name);
     }
 
@@ -29,6 +33,16 @@ class DBFloat extends DBField
         ];
         $values = ['type' => 'float', 'parts' => $parts];
         DB::require_field($this->tableName, $this->name, $values);
+    }
+
+    public function setValue(mixed $value, null|array|ModelData $record = null, bool $markChanged = true): static
+    {
+        // Cast ints and numeric strings to floats
+        if (is_int($value) || (is_string($value) && is_numeric($value))) {
+            $value = (float) $value;
+        }
+        parent::setValue($value, $record, $markChanged);
+        return $this;
     }
 
     /**
@@ -58,9 +72,9 @@ class DBFloat extends DBField
         return $field;
     }
 
-    public function nullValue(): ?int
+    public function nullValue(): ?float
     {
-        return 0;
+        return 0.0;
     }
 
     public function prepValueForDB(mixed $value): array|float|int|null
