@@ -23,6 +23,8 @@ pl_PL:
     Save: Zapisz
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Edytuj
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Szukaj
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Strona
   SilverStripe\Forms\UrlField:

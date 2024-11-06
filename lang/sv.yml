@@ -95,6 +95,8 @@ sv:
     Saved: 'Sparade {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Ändra
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Sök
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Du kan inte radera dig själv från den här gruppen, då du då kommer att förlora dina admin-rättigheter'
   SilverStripe\Forms\GridField\GridFieldPaginator:

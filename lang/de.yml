@@ -133,6 +133,7 @@ de:
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
     Search: 'Suche "{name}"'
     SearchFormFaliure: 'Das Suchformular konnte nicht erzeugt werden'
+    Search_Default: Suche
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Sie können sich nicht selber von dieser Gruppe entfernen, Sie würden Admin-Rechte verlieren.'
   SilverStripe\Forms\GridField\GridFieldPaginator:

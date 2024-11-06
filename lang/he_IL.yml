@@ -25,6 +25,8 @@ he_IL:
     Create: יצירה
     Delete: מחק
     Save: שמור
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: חיפוש
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: מתוך
     Page: עמוד

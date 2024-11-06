@@ -115,6 +115,7 @@ fi_FI:
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
     Search: 'Hae "{name}"'
     SearchFormFaliure: 'Hakulomaketta ei voitu luoda'
+    Search_Default: Haku
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Et voi siirtää itseäsi pois tästä ryhmästä: menettäisit pääkäyttäjän oikeudet'
   SilverStripe\Forms\GridField\GridFieldPaginator:

@@ -30,6 +30,8 @@ ca:
   SilverStripe\Forms\GridField\GridFieldDetailForm:
     Delete: Suprimeix
     Save: Desa
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Cerca
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Pàgina
   SilverStripe\ORM\DataObject:
