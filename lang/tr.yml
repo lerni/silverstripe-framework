@@ -41,6 +41,8 @@ tr:
     Create: Oluştur
     Delete: Sil
     Save: Kaydet
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Ara
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Sayfa
   SilverStripe\Forms\NullableField:

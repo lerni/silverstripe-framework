@@ -94,6 +94,8 @@ ru:
     Saved: 'Сохранено: {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Редактировать
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Поиск
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: из
     Page: Страница

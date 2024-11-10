@@ -31,6 +31,8 @@ az:
   SilverStripe\Forms\GridField\GridFieldDetailForm:
     Delete: 'Dərc olunmuş saytdan sil'
     Save: 'Yadda saxla'
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Axtar
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Səhifə
   SilverStripe\Forms\MoneyField:

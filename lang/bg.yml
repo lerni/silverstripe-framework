@@ -94,6 +94,8 @@ bg:
     Save: Запис
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Редактиране
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Търси
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: от
     Page: Страница

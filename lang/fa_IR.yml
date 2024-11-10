@@ -85,6 +85,8 @@ fa_IR:
     Saved: 'ذخیره‌شده {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: ویرایش
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: جستجو
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: از
     Page: صفحه

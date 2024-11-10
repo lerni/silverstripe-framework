@@ -101,6 +101,8 @@ fr:
     SAVETOASTMESSAGE: 'Sauvegardé {type} "{title}" avec succès.'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Éditer
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Rechercher
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: "Impossible de retirer votre propre profil de ce groupe, vous perdriez vos droits d'administration"
   SilverStripe\Forms\GridField\GridFieldPaginator:

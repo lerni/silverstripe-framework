@@ -129,6 +129,7 @@ sk:
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
     Search: 'Hľadať "{name}"'
     SearchFormFaliure: 'Nepodarilo sa vygenerovať žiadny vyhľadávací formulár'
+    Search_Default: Hľadať
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Z tejto skupiny sa nemôžete odstrániť, stratíte práva správcu'
   SilverStripe\Forms\GridField\GridFieldPaginator:

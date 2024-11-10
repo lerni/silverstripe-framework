@@ -79,6 +79,8 @@ ar:
     Saved: 'المحفوظ {اسم} {رابط}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: تحرير
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: بحث
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: من
     Page: صفحة

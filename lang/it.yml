@@ -117,6 +117,7 @@ it:
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
     Search: 'Cerca "{name}"'
     SearchFormFaliure: 'Nessun modulo di ricerca può essere generato'
+    Search_Default: Cerca
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Non è possibile rimuovere te stesso da questo gruppo, perderesti i diritti di admin'
   SilverStripe\Forms\GridField\GridFieldPaginator:

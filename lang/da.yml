@@ -88,6 +88,8 @@ da:
     Save: Gem
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Rediger
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Søg
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Kan ikke fjerne dig selv fra denne gruppe, du vil miste administrator rettigheder'
   SilverStripe\Forms\GridField\GridFieldPaginator:

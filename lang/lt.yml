@@ -81,6 +81,8 @@ lt:
     Saved: 'Išsaugota {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Redaguoti
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Ieškoti
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: iš
     Page: Puslapis
