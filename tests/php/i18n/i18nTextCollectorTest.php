@@ -709,6 +709,7 @@ PHP;
                     'other' => '{count} My Objects',
                 ],
                 'SilverStripe\i18n\Tests\i18nTest\MyObject.SINGULARNAME' => 'My Object',
+                'SilverStripe\i18n\Tests\i18nTest\MyObject.CLASS_DESCRIPTION' => 'A class that represents objects',
             ],
             $matches
         );
