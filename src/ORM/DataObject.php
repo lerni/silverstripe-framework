@@ -3552,7 +3552,7 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
      */
     public static function reset()
     {
-        DBEnum::flushCache();
+        DBEnum::reset();
         ClassInfo::reset_db_cache();
         static::getSchema()->reset();
         DataObject::$_cache_get_one = [];
