@@ -118,6 +118,7 @@ sl:
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
     Search: 'Išči "{name}"'
     SearchFormFaliure: 'Ni nam uspelo pripraviti obrazca za iskanje'
+    Search_Default: Najdi
   SilverStripe\Forms\GridField\GridFieldGroupDeleteAction:
     UnlinkSelfFailure: 'Ne moremo vas odstraniti iz te skupine, saj boste izgubili administratorske pravice'
   SilverStripe\Forms\GridField\GridFieldPaginator:

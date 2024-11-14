@@ -74,6 +74,8 @@ id_ID:
     Deleted: '{type} {name} dihapus'
     Save: Simpan
     Saved: 'Simpan {name} {link}'
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Cari
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: dari
     Page: Laman

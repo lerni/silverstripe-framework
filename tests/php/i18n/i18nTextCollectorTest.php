@@ -715,8 +715,61 @@ PHP;
                     'other' => '{count} My Objects',
                 ],
                 'SilverStripe\i18n\Tests\i18nTest\MyObject.SINGULARNAME' => 'My Object',
+                'SilverStripe\i18n\Tests\i18nTest\MyObject.CLASS_DESCRIPTION' => 'A class that represents objects',
             ],
             $matches
+        );
+    }
+
+    public function testCollectFromAnonymousMethod()
+    {
+        $c = i18nTextCollector::create();
+        $mymodule = ModuleLoader::inst()->getManifest()->getModule('i18ntestmodule');
+        $php = <<<PHP
+<?php
+namespace SilverStripe\Framework\Core;
+
+class MyClass
+{
+    public function getNewLines(\$class) {
+        Deprecation::withSuppressedNotice(function () {
+            \$this->someMethod(_t(
+                MyClass::class . '.SOMETHING_A',
+                'something a',
+            ));
+        });
+    }
+
+    public function getNewLinesWithSomething(\$class, \$something) {
+        Deprecation::withSuppressedNotice(function () use (\$something) {
+            \$this->someMethod(_t(
+                MyClass::class . '.SOMETHING_B',
+                'something {something}',
+                ['something' => \$something]
+            ));
+        });
+    }
+
+    public function getNewLinesWithSomething(\$class, \$something) {
+        Deprecation::withSuppressedNotice(function (
+            \$myparam
+        ) use (\$something) {
+            \$this->someMethod(_t(
+                MyClass::class . '.SOMETHING_C',
+                'something {something} {myparam}',
+                ['something' => \$something, 'myparam' => \$myparam]
+            ));
+        });
+    }
+}
+PHP;
+        $this->assertEquals(
+            [
+                'SilverStripe\\Framework\\Core\\MyClass.SOMETHING_A' => "something a",
+                'SilverStripe\\Framework\\Core\\MyClass.SOMETHING_B' => "something {something}",
+                'SilverStripe\\Framework\\Core\\MyClass.SOMETHING_C' => "something {something} {myparam}",
+            ],
+            $c->collectFromCode($php, null, $mymodule)
         );
     }
 

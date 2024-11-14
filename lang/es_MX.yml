@@ -62,6 +62,8 @@ es_MX:
     Save: Guardar
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Editar
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Buscar
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Página
     View: Ver

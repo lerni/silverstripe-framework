@@ -16,6 +16,7 @@ use SilverStripe\View\AttributesHTML;
 use SilverStripe\View\SSViewer;
 use SilverStripe\Model\ModelData;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Dev\Deprecation;
 
 /**
  * Represents a field in a form.
@@ -1226,9 +1227,11 @@ class FormField extends RequestHandler
      * @param bool $result
      * @param Validator $validator
      * @return bool
+     * @deprecated 5.4.0 Use extend() directly instead
      */
     protected function extendValidationResult(bool $result, Validator $validator): bool
     {
+        Deprecation::notice('5.4.0', 'Use extend() directly instead');
         $this->extend('updateValidationResult', $result, $validator);
         return $result;
     }

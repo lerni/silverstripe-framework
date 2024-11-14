@@ -74,6 +74,8 @@ sr_RS:
     Saved: 'Сачувано {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Измени
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Претрага
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: од
     Page: Страница

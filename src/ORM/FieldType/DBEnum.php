@@ -4,6 +4,8 @@ namespace SilverStripe\ORM\FieldType;
 
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Validation\FieldValidation\OptionFieldValidator;
+use SilverStripe\Core\Resettable;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\SelectField;
@@ -17,7 +19,7 @@ use SilverStripe\Model\ModelData;
  *
  * See {@link DropdownField} for a {@link FormField} to select enum values.
  */
-class DBEnum extends DBString
+class DBEnum extends DBString implements Resettable
 {
     private static array $field_validators = [
         OptionFieldValidator::class => ['getEnum'],
@@ -43,8 +45,15 @@ class DBEnum extends DBString
 
     /**
      * Clear all cached enum values.
+     * @deprecated 5.4.0 Use reset() instead.
      */
     public static function flushCache(): void
+    {
+        Deprecation::notice('5.4.0', 'Use reset() instead.');
+        static::reset();
+    }
+
+    public static function reset(): void
     {
         DBEnum::$enum_cache = [];
     }
@@ -182,7 +191,7 @@ class DBEnum extends DBString
      * If table or name are not set, or if it is not a valid field on the given table,
      * then only known enum values are returned.
      *
-     * Values cached in this method can be cleared via `DBEnum::flushCache();`
+     * Values cached in this method can be cleared via `DBEnum::reset();`
      */
     public function getEnumObsolete(): array
     {

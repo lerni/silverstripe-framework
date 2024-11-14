@@ -49,6 +49,7 @@ de_DE:
     EDIT: Bearbeiten
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
     Search: 'Suche "{name}"'
+    Search_Default: Suche
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Seite
     View: Anzeigen

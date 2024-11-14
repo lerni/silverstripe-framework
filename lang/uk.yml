@@ -38,6 +38,8 @@ uk:
     Delete: Видалити
     Save: Зберегти
     Saved: 'Збережено {name} {link}'
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Пошук
   SilverStripe\Forms\GridField\GridFieldPaginator:
     Page: Сторінка
   SilverStripe\Forms\MoneyField:

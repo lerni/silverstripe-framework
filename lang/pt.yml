@@ -47,6 +47,8 @@ pt:
     Delete: Apagar
     DeletePermissionsFailure: 'Não tem permissões para apagar'
     Save: Guardar
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Procurar
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: de
     Page: Página

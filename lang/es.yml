@@ -87,6 +87,8 @@ es:
     Saved: 'Guardado {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Editar
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: Buscar
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: de
     Page: Página

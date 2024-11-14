@@ -601,6 +601,7 @@ class i18nTextCollector
         $entities = [];
 
         $tokens = token_get_all("<?php\n" . $content);
+        $lines = explode("\n", str_replace("\r\n", "\n", $content));
         $inTransFn = false;
         $inConcat = false;
         $inNamespace = false;
@@ -621,10 +622,14 @@ class i18nTextCollector
             $previousToken = $thisToken;
             $thisToken = $token;
             if (is_array($token)) {
-                list($id, $text) = $token;
+                list($id, $text, $lineNo) = $token;
+                // minus 2 is used so the the line we get corresponds with what number token_get_all() returned
+                $line = $lines[$lineNo - 2] ?? '';
 
                 // Collect use statements so we can get fully qualified class names
-                if ($id === T_USE) {
+                // Note that T_USE will match both use statements and anonymous functions with the "use" keyword
+                // e.g. $func = function () use ($var) { ... };
+                if ($id === T_USE && !preg_match('#use *\(#', $line)) {
                     $inUse = true;
                     $currentUse = [];
                     continue;

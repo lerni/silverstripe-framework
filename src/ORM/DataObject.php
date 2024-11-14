@@ -129,6 +129,15 @@ class DataObject extends ModelData implements DataObjectInterface, i18nEntityPro
     private static $plural_name = null;
 
     /**
+     * Description of the class.
+     * Unlike most configuration, this is usually used uninherited, meaning it should be defined
+     * on each subclass.
+     *
+     * Used in some areas of the CMS, e.g. when selecting what type of record to create.
+     */
+    private static ?string $class_description = null;
+
+    /**
      * @config
      */
     private static $api_access = false;
@@ -944,6 +953,44 @@ class DataObject extends ModelData implements DataObjectInterface, i18nEntityPro
     public function i18n_plural_name()
     {
         return _t(static::class . '.PLURALNAME', $this->plural_name());
+    }
+
+    /**
+     * Get description for this class
+     * @return null|string
+     */
+    public function classDescription()
+    {
+        return static::config()->get('class_description', Config::UNINHERITED);
+    }
+
+    /**
+     * Get localised description for this class
+     * @return null|string
+     */
+    public function i18n_classDescription()
+    {
+        $notDefined = 'NOT_DEFINED';
+        $baseDescription = $this->classDescription() ?? $notDefined;
+
+        // Check the new i18n key first
+        $description = _t(static::class . '.CLASS_DESCRIPTION', $baseDescription);
+        if ($description !== $baseDescription) {
+            return $description;
+        }
+
+        // Fall back on the deprecated localisation key
+        $legacyI18n = _t(static::class . '.DESCRIPTION', $baseDescription);
+        if ($legacyI18n !== $baseDescription) {
+            return $legacyI18n;
+        }
+
+        // If there was no description available in config nor in i18n, return null
+        if ($baseDescription === $notDefined) {
+            return null;
+        }
+        // Return raw description
+        return $baseDescription;
     }
 
     /**
@@ -3567,7 +3614,7 @@ class DataObject extends ModelData implements DataObjectInterface, i18nEntityPro
      */
     public static function reset()
     {
-        DBEnum::flushCache();
+        DBEnum::reset();
         ClassInfo::reset_db_cache();
         static::getSchema()->reset();
         DataObject::$_cache_get_one = [];
@@ -4393,7 +4440,8 @@ class DataObject extends ModelData implements DataObjectInterface, i18nEntityPro
         $singularName = $this->singular_name();
         $conjunction = preg_match('/^[aeiou]/i', $singularName ?? '') ? 'An ' : 'A ';
         return [
-            static::class . '.SINGULARNAME' => $this->singular_name(),
+            static::class . '.CLASS_DESCRIPTION' => $this->classDescription(),
+            static::class . '.SINGULARNAME' => $singularName,
             static::class . '.PLURALNAME' => $pluralName,
             static::class . '.PLURALS' => [
                 'one' => $conjunction . $singularName,

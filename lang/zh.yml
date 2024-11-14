@@ -80,6 +80,8 @@ zh:
     Saved: '已保存 {name} {link}'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: 编辑
+  SilverStripe\Forms\GridField\GridFieldFilterHeader:
+    Search_Default: 查询
   SilverStripe\Forms\GridField\GridFieldPaginator:
     OF: 的
     Page: 页面
