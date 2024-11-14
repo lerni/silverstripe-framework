@@ -43,7 +43,7 @@
         "silverstripe/template-engine": "^1",
         "silverstripe/vendor-plugin": "^2",
         "sminnee/callbacklist": "^0.1.1",
-        "symfony/cache": "^7.0",
+        "symfony/cache": "^7.1.5",
         "symfony/config": "^7.0",
         "symfony/console": "^7.0",
         "symfony/dom-crawler": "^7.0",
