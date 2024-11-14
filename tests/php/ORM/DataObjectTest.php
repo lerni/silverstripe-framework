@@ -1907,52 +1907,124 @@ class DataObjectTest extends SapphireTest
         $this->assertEquals(2, $player->Teams()->dataQuery()->query()->unlimitedRowCount());
     }
 
+    public function provideSingularName(): array
+    {
+        return [
+            [
+                'class' => DataObjectTest\Player::class,
+                'expected' => 'Player',
+            ],
+            [
+                'class' => DataObjectTest\Team::class,
+                'expected' => 'Team',
+            ],
+            [
+                'class' => DataObjectTest\Fixture::class,
+                'expected' => 'Fixture',
+            ],
+        ];
+    }
+
     /**
      * Tests that singular_name() generates sensible defaults.
+     * @dataProvider provideSingularName
      */
-    public function testSingularName()
+    public function testSingularName(string $class, string $expected): void
     {
-        $assertions = [
-            DataObjectTest\Player::class => 'Player',
-            DataObjectTest\Team::class => 'Team',
-            DataObjectTest\Fixture::class => 'Fixture',
-        ];
+        i18n::set_locale('en_NZ');
+        /** @var DataObject $object */
+        $object = new $class();
+        $this->assertEquals(
+            $expected,
+            $object->singular_name(),
+            "Assert that the singular_name for '$class' is correct."
+        );
+        $this->assertEquals(
+            $expected,
+            $object->i18n_singular_name(),
+            "Assert that the i18n_singular_name for '$class' is correct."
+        );
+    }
 
-        foreach ($assertions as $class => $expectedSingularName) {
-            $this->assertEquals(
-                $expectedSingularName,
-                singleton($class)->singular_name(),
-                "Assert that the singular_name for '$class' is correct."
-            );
-        }
+    public function providePluralName(): array
+    {
+        return [
+            [
+                'class' => DataObjectTest\Player::class,
+                'expected' => 'Players',
+            ],
+            [
+                'class' => DataObjectTest\Team::class,
+                'expected' => 'Teams',
+            ],
+            [
+                'class' => DataObjectTest\Fixture::class,
+                'expected' => 'Fixtures',
+            ],
+            [
+                'class' => DataObjectTest\Play::class,
+                'expected' => 'Plays',
+            ],
+            [
+                'class' => DataObjectTest\Bogey::class,
+                'expected' => 'Bogeys',
+            ],
+            [
+                'class' => DataObjectTest\Ploy::class,
+                'expected' => 'Ploys',
+            ],
+        ];
     }
 
     /**
      * Tests that plural_name() generates sensible defaults.
+     * @dataProvider providePluralName
      */
-    public function testPluralName()
+    public function testPluralName(string $class, string $expected): void
     {
-        $assertions = [
-            DataObjectTest\Player::class => 'Players',
-            DataObjectTest\Team::class => 'Teams',
-            DataObjectTest\Fixture::class => 'Fixtures',
-            DataObjectTest\Play::class => 'Plays',
-            DataObjectTest\Bogey::class => 'Bogeys',
-            DataObjectTest\Ploy::class => 'Ploys',
-        ];
         i18n::set_locale('en_NZ');
-        foreach ($assertions as $class => $expectedPluralName) {
-            $this->assertEquals(
-                $expectedPluralName,
-                DataObject::singleton($class)->plural_name(),
-                "Assert that the plural_name for '$class' is correct."
-            );
-            $this->assertEquals(
-                $expectedPluralName,
-                DataObject::singleton($class)->i18n_plural_name(),
-                "Assert that the i18n_plural_name for '$class' is correct."
-            );
-        }
+        /** @var DataObject $object */
+        $object = new $class();
+        $this->assertEquals(
+            $expected,
+            $object->plural_name(),
+            "Assert that the plural_name for '$class' is correct."
+        );
+        $this->assertEquals(
+            $expected,
+            $object->i18n_plural_name(),
+            "Assert that the i18n_plural_name for '$class' is correct."
+        );
+    }
+
+    public function provideClassDescription(): array
+    {
+        return [
+            'no description by default' => [
+                'class' => DataObjectTest\Player::class,
+                'expected' => null,
+            ],
+            'explicitly set description' => [
+                'class' => DataObjectTest\Team::class,
+                'expected' => 'A team of players',
+            ],
+            'cannot inherit description from superclass' => [
+                'class' => DataObjectTest\SubTeam::class,
+                'expected' => null,
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider provideClassDescription
+     */
+    public function testClassDescription(string $class, ?string $expected): void
+    {
+        i18n::set_locale('en_NZ');
+        /** @var DataObject $object */
+        $object = new $class();
+        $this->assertEquals($expected, $object->classDescription());
+        $this->assertEquals($expected, $object->i18n_classDescription());
     }
 
     public function testHasDatabaseField()
