@@ -4,6 +4,7 @@ namespace SilverStripe\ORM\Tests;
 
 use InvalidArgumentException;
 use LogicException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
@@ -27,7 +28,6 @@ use SilverStripe\Security\Member;
 use SilverStripe\Model\ModelData;
 use ReflectionMethod;
 use stdClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DataObjectTest extends SapphireTest
 {
@@ -1913,7 +1913,7 @@ class DataObjectTest extends SapphireTest
         $this->assertEquals(2, $player->Teams()->dataQuery()->query()->unlimitedRowCount());
     }
 
-    public function provideSingularName(): array
+    public static function provideSingularName(): array
     {
         return [
             [
@@ -1933,8 +1933,8 @@ class DataObjectTest extends SapphireTest
 
     /**
      * Tests that singular_name() generates sensible defaults.
-     * @dataProvider provideSingularName
      */
+    #[DataProvider('provideSingularName')]
     public function testSingularName(string $class, string $expected): void
     {
         i18n::set_locale('en_NZ');
@@ -1952,7 +1952,7 @@ class DataObjectTest extends SapphireTest
         );
     }
 
-    public function providePluralName(): array
+    public static function providePluralName(): array
     {
         return [
             [
@@ -1984,8 +1984,8 @@ class DataObjectTest extends SapphireTest
 
     /**
      * Tests that plural_name() generates sensible defaults.
-     * @dataProvider providePluralName
      */
+    #[DataProvider('providePluralName')]
     public function testPluralName(string $class, string $expected): void
     {
         i18n::set_locale('en_NZ');
@@ -2003,7 +2003,7 @@ class DataObjectTest extends SapphireTest
         );
     }
 
-    public function provideClassDescription(): array
+    public static function provideClassDescription(): array
     {
         return [
             'no description by default' => [
@@ -2021,9 +2021,7 @@ class DataObjectTest extends SapphireTest
         ];
     }
 
-    /**
-     * @dataProvider provideClassDescription
-     */
+    #[DataProvider('provideClassDescription')]
     public function testClassDescription(string $class, ?string $expected): void
     {
         i18n::set_locale('en_NZ');
