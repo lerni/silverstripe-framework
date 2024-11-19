@@ -392,7 +392,7 @@ class RequirementsTest extends SapphireTest
             $result
         );
         $this->assertMatchesRegularExpression(
-            '#<script type="application/javascript" src=".*/javascript/RequirementsTest_b.js#',
+            '#<script src=".*/javascript/RequirementsTest_b.js#',
             $result
         );
     }
@@ -1070,7 +1070,7 @@ class RequirementsTest extends SapphireTest
         $urlSrc = $urlGenerator->urlForResource($src);
         $this->assertEquals(
             '<html><head></head><body><!--<script>alert("commented out");</script>-->'
-            . '<h1>more content</h1><script type="application/javascript" src="' . $urlSrc
+            . '<h1>more content</h1><script src="' . $urlSrc
             . "\"></script>\n</body></html>",
             $html
         );
@@ -1094,8 +1094,8 @@ EOS
         $template = '<html><head></head><body><header>My header</header><p>Body<script></script></p></body></html>';
 
         // The expected outputs
-        $expectedScripts = "<script type=\"application/javascript\" src=\"http://www.mydomain.com/test.js\"></script>\n"
-            . "<script type=\"application/javascript\">//<![CDATA[\n"
+        $expectedScripts = "<script src=\"http://www.mydomain.com/test.js\"></script>\n"
+            . "<script>//<![CDATA[\n"
             . "var globalvar = {\n\tpattern: '\\\\\$custom\\\\1'\n};\n"
             . "//]]></script>\n";
         $JsInHead = "<html><head>$expectedScripts</head><body><header>My header</header><p>Body<script></script></p></body></html>";
@@ -1407,7 +1407,7 @@ EOS
 
         /* Javascript has correct attributes */
         $this->assertMatchesRegularExpression(
-            '#<script type="application/javascript" src=".*/javascript/RequirementsTest_a.js.*" integrity="abc" crossorigin="use-credentials"#',
+            '#<script src=".*/javascript/RequirementsTest_a.js.*" integrity="abc" crossorigin="use-credentials"#',
             $html,
             'javascript has correct sri attributes'
         );
@@ -1454,14 +1454,14 @@ EOS
         );
 
         $this->assertDoesNotMatchRegularExpression(
-            "#<script type=\"application/javascript\">//<!\[CDATA\[\s*Do Not Display\s*//\]\]></script>#s",
+            "#<script>//<!\[CDATA\[\s*Do Not Display\s*//\]\]></script>#s",
             $html,
             'customScript is correctly not displaying original write'
         );
 
         /* customScriptWithAttributes is overwritten by customScript */
         $this->assertMatchesRegularExpression(
-            "#<script type=\"application/javascript\">//<!\[CDATA\[\s*Override\s*//\]\]></script>#s",
+            "#<script>//<!\[CDATA\[\s*Override\s*//\]\]></script>#s",
             $html,
             'customScript is displaying latest write and clearing attributes'
         );
