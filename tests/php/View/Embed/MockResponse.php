@@ -36,26 +36,32 @@ class MockResponse implements ResponseInterface
 
     public function getReasonPhrase()
     {
+        return '';
     }
 
     public function getProtocolVersion()
     {
+        return '';
     }
 
     public function getHeaders()
     {
+        return [];
     }
 
     public function getHeader($name)
     {
+        return '';
     }
 
     public function getHeaderLine($name)
     {
+        return '';
     }
 
     public function hasHeader($name)
     {
+        return false;
     }
 
     public function withHeader($name, $value)
