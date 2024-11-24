@@ -10,6 +10,7 @@ use SilverStripe\ORM\FieldType\DBText;
 use SilverStripe\ORM\FieldType\DBFloat;
 use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\PaginatedList;
 
 /**
  * This tracks the current scope for an SSViewer instance. It has three goals:
@@ -305,8 +306,8 @@ class SSViewer_Scope
         }
 
         if (!$this->itemIterator) {
-            // Note: it is important that getIterator() is called before count() as implemenations may rely on
-            // this to efficiency get both the number of records and an iterator (e.g. DataList does this)
+            // Note: it is important that getIterator() is called before count() as implementations may rely on
+            // this to efficiently get both the number of records and an iterator (e.g. DataList does this)
 
             // Item may be an array or a regular IteratorAggregate
             if (is_array($this->item)) {
@@ -319,11 +320,19 @@ class SSViewer_Scope
                 $this->itemIterator->rewind();
             }
 
-            // If the item implements Countable, use that to fetch the count, otherwise we have to inspect the
-            // iterator and then rewind it.
-            if ($this->item instanceof Countable) {
+            // Special case: we *don't* want to use count() on PaginatedList. This is because it'll call
+            // PaginatedList::count(), which currently returns the full list count rather than the count of items
+            // on the current page (which is what we need for the iterator count)
+            if ($this->item instanceof PaginatedList) {
+                // We have to re-fetch the iterator before calling getInnerIterator(): we need to count a copy of the
+                // inner iterator because it's a generator so can't be rewound or cloned
+                $innerIterator = $this->item->getIterator()->getInnerIterator();
+                $this->itemIteratorTotal = iterator_count($innerIterator);
+            } elseif ($this->item instanceof Countable) {
+                // If the item implements Countable, use that to fetch the count
                 $this->itemIteratorTotal = count($this->item);
             } else {
+                // Otherwise we have to inspect the iterator and then rewind it
                 $this->itemIteratorTotal = iterator_count($this->itemIterator);
                 $this->itemIterator->rewind();
             }
