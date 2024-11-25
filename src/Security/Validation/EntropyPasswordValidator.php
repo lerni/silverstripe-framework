@@ -20,7 +20,7 @@ class EntropyPasswordValidator extends PasswordValidator
      * The strength of a valid password.
      * See https://symfony.com/doc/current/reference/constraints/PasswordStrength.html#minscore
      */
-    private static int $password_strength = PasswordStrength::STRENGTH_STRONG;
+    private static int $password_strength = PasswordStrength::STRENGTH_MEDIUM;
 
     public function validate(string $password, Member $member): ValidationResult
     {
