@@ -53,7 +53,7 @@ class ConfirmedPasswordField extends FormField
      * Minimum password strength if requireStrongPassword is true
      * See https://symfony.com/doc/current/reference/constraints/PasswordStrength.html#minscore
      */
-    private int $minPasswordStrength = PasswordStrength::STRENGTH_STRONG;
+    private int $minPasswordStrength = PasswordStrength::STRENGTH_MEDIUM;
 
     /**
      * Callback used to generate a random password if $this->canBeEmpty is true and the field is left blank
