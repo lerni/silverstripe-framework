@@ -35,7 +35,7 @@ class HTMLValue extends ModelData
         $content = preg_replace('#</?(html|head(?!er)|body)[^>]*>#si', '', $content);
         $html5 = new HTML5(['disable_html_ns' => true]);
         $document = $html5->loadHTML(
-            '<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"></head>' .
+            '<html><head><meta charset="utf-8"></head>' .
             "<body>$content</body></html>"
         );
         if ($document) {
